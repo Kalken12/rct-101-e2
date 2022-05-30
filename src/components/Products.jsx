@@ -31,7 +31,7 @@ const Products = () => {
   // const Flex = () => <div />;
   // const Grid = () => <div />;
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [emdata, setEmData] = useState([])
+  const [emdata, setEmData] = useState()
   const [form, setForm] = useState({
 
 
@@ -67,12 +67,12 @@ const Products = () => {
     })
   }
  
-  fetch(`http://localhost:8080/products`)
-.then((r)=>r.json())
-.then((d)=>{
-  console.log("ddd",d)
-  setEmData(d)
-})
+//   fetch(`http://localhost:8080/products`)
+// .then((r)=>r.json())
+// .then((d)=>{
+//   console.log("ddd",d)
+//   setEmData(d)
+// })
    
     // setEmData(emdata)
     // console.log("emd",emdata)
@@ -131,11 +131,11 @@ const Products = () => {
       
 
    <Flex>
-    {
+    {/* {
       emdata.map((el)=>{
     <Product key={el.id} product={el}  />
 
-    })
+    }) */}
   }
 </Flex>
   
