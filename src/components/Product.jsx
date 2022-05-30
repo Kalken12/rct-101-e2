@@ -12,20 +12,23 @@ import {
 }from '@chakra-ui/react'
 
 
-const Product = ({product}) => {
+const Product = ({props}) => {
+console.log("product..", ...props)
+ 
 
-  let {  title, category , gender, imageSrc, price} = product ;
-  console.log("title", title)
+
+ let {  title, category , gender, imageSrc, price} = props ;
+   console.log("title", title)
 
   return (
     <Stack data-cy="product">
-      <Image data-cy="product-image" src={product.imageSrc} />
-      <Text data-cy="product-category">{product.category}</Text>
+      <Image data-cy="product-image" src={props.imageSrc} />
+      <Text data-cy="product-category">{props.category}</Text>
       <Tag>
-        <TagLabel data-cy="product-gender">{product.gender}</TagLabel>
+        <TagLabel data-cy="product-gender">{props.gender}</TagLabel>
       </Tag>
-      <Heading data-cy="product-title">{product.title}</Heading>
-      <Box data-cy="product-price">{product.price}</Box>
+      <Heading data-cy="product-title">{props.title}</Heading>
+      <Box data-cy="product-price">{props.price}</Box>
     </Stack>
   );
 };

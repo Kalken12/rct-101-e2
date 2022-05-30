@@ -31,7 +31,8 @@ const Products = () => {
   // const Flex = () => <div />;
   // const Grid = () => <div />;
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [emdata, setEmData] = useState()
+  const [emdata, setEmData] = useState([])
+  
   const [form, setForm] = useState({
 
 
@@ -45,6 +46,8 @@ const Products = () => {
   
 
   const onchange = (e) => {
+    e.preventDefault()
+  
     console.log("e", e)
     let { name, value } = e.target
     setForm({
@@ -62,27 +65,28 @@ const Products = () => {
       imageSrc: "",
       price: form.price
 
-    }).then(res => {
-      console.log(res.data)
     })
+    .then(function (response) {
+      
+      
+    })
+   
+    
   }
- 
-//   fetch(`http://localhost:8080/products`)
-// .then((r)=>r.json())
-// .then((d)=>{
-//   console.log("ddd",d)
-//   setEmData(d)
-// })
-   
-    // setEmData(emdata)
-    // console.log("emd",emdata)
+  const getData = async () => {
+
+    const { data } = await axios.get(`http://localhost:8080/products`);
+     setEmData(data);
+     console.log(emdata)
+  };
+  useEffect(() => {
+    getData();
+    console.log(emdata)
+  }, []);
+    
 
 
-  
-
  
- 
-   
   
 
  
@@ -130,18 +134,23 @@ const Products = () => {
         </Modal>
       
 
-   <Flex>
-    {/* {
-      emdata.map((el)=>{
-    <Product key={el.id} product={el}  />
-
-    }) */}
-  }
-</Flex>
+  
   
    
     
     <Pagination/>
+
+
+
+    <div>
+
+{
+  // emdata.map((el)=>
+  // {
+  //  <Product key={el.id} product={el}/>
+  // })
+}
+</div>
     </Grid>
   );
 };
